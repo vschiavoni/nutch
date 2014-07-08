@@ -21,7 +21,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.gora.query.Query;
 import org.apache.gora.query.Result;
@@ -82,7 +81,7 @@ public class DbReader {
   }
 
   private String[] prepareFields(Set<String> fields) {
-    if (CollectionUtils.isEmpty(fields)) {
+    if (fields.isEmpty()) {
       return null;
     }
     fields.remove("url");

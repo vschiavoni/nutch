@@ -25,8 +25,7 @@ import java.util.Set;
 
 import org.apache.avro.Schema.Field;
 import org.apache.avro.util.Utf8;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.nutch.parse.ParseStatusUtils;
 import org.apache.nutch.protocol.ProtocolStatusUtils;
@@ -100,7 +99,7 @@ public class DbPageConverter {
 
   private static Set<Field> filterFields(WebPage page, Set<String> queryFields) {
     List<Field> pageFields = page.getSchema().getFields();
-    if (CollectionUtils.isEmpty(queryFields)) {
+    if (queryFields.isEmpty()) {
       return Sets.newHashSet(pageFields);
     }
     
@@ -115,7 +114,7 @@ public class DbPageConverter {
 
   private static Map<String, String> getSimpleMetadata(WebPage page) {
     Map<CharSequence, ByteBuffer> metadata = page.getMetadata();
-    if (MapUtils.isEmpty(metadata)) {
+    if (metadata.isEmpty()) {
       return Collections.emptyMap();
     }
     Map<String, String> simpleMeta = Maps.newHashMap();

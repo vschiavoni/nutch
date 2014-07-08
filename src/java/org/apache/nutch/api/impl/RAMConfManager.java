@@ -23,7 +23,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.nutch.api.ConfManager;
@@ -108,7 +107,7 @@ public class RAMConfManager implements ConfManager {
     Configuration conf = NutchConfiguration.create();
     configurations.put(nutchConfig.getConfigId(), conf);
 
-    if (MapUtils.isEmpty(nutchConfig.getParams())) {
+    if (nutchConfig.getParams().isEmpty()) {
       return;
     }
     for (Entry<String, String> e : nutchConfig.getParams().entrySet()) {

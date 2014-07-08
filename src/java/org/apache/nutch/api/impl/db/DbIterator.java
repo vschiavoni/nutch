@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.avro.util.Utf8;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.gora.query.Result;
 import org.apache.nutch.storage.Mark;
 import org.apache.nutch.storage.WebPage;
@@ -102,7 +101,7 @@ public class DbIterator extends UnmodifiableIterator<Map<String, Object>> {
   private Map<String, Object> pageAsMap(String url, WebPage page) {
     Map<String, Object> result = DbPageConverter.convertPage(page, commonFields);
 
-    if (CollectionUtils.isEmpty(commonFields) || commonFields.contains("url")) {
+    if (commonFields.isEmpty() || commonFields.contains("url")) {
       result.put("url", TableUtil.unreverseUrl(url));
     }
     return result;
